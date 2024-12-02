@@ -1,0 +1,218 @@
+:root {
+  /* Colores principales */
+  --robot-light: #fdfdfd;
+  --robot-dark: #e3e3e3;
+
+  /* Colores de la cara */
+  --robot-face-primary: #40355e;
+  --robot-face-secondary: #241e36;
+  --robot-eyes: aquamarine;
+  --robot-mouth: white;
+
+  /* Medidas comunes */
+  --robot-width: 100px;
+  --robot-border-radius: 105px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to right,
+    var(--robot-face-primary),
+    var(--robot-face-secondary)
+  );
+}
+
+.robotito {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--robot-width);
+  z-index: 1;
+  scale: 3;
+  /* transform-style: preserve-3d;
+  transition: all 3s ease; */
+}
+/* .robotito:hover {
+  transform: rotate3d(1, 1, 1, 180deg);
+} */
+
+.cabeza {
+  height: 65px;
+  width: 100px;
+  border-radius: 105px;
+  background: linear-gradient(
+    to right,
+    var(--robot-light) 50%,
+    var(--robot-dark) 50%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 0.5s;
+  animation: flotar 2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+.cabeza::before {
+  content: "";
+  background-color: var(--robot-eyes);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 105px;
+  background: linear-gradient(
+    to right,
+    var(--robot-light) 50%,
+    var(--robot-dark) 50%
+  );
+  z-index: -2;
+}
+.carita {
+  background: linear-gradient(
+    to right,
+    var(--robot-face-primary),
+    var(--robot-face-secondary)
+  );
+  width: 75%;
+  height: 68%;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.ojitos {
+  height: 34%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 35%;
+  margin-top: 14%;
+}
+.ojito {
+  background-color: var(--robot-eyes);
+  width: 20%;
+  height: 90%;
+  border-radius: 50%;
+  animation: flotar 2s ease-in-out infinite;
+}
+
+.boquita {
+  background-color: var(--robot-mouth);
+  width: 16%;
+  height: 16%;
+  border-radius: 0px 0px 150px 150px;
+}
+.orejitas {
+  clip-path: polygon(
+    60.48% 100%,
+    100% 70.71%,
+    100% 29.29%,
+    60.48% 0%,
+    38.52% 0%,
+    0% 29.29%,
+    0% 70.71%,
+    38.52% 100%
+  );
+  background-color: var(--robot-light);
+  position: absolute;
+  width: 115%;
+  height: 60%;
+  z-index: -10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 100px;
+}
+.cuerpo {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-top: 8%;
+  animation: flotar 2s ease-in-out infinite;
+  transition: all ease 0.5s;
+}
+.torso {
+  background: linear-gradient(
+    to right,
+    var(--robot-light) 50%,
+    var(--robot-dark) 50%
+  );
+  height: 50px;
+  width: 50px;
+  border-radius: 50px 50px 150px 150px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.cuellito {
+  background-color: var(--robot-dark);
+  width: 84%;
+  height: 12%;
+  border-radius: 50%;
+  transform: translateY(-21%);
+}
+.brazo {
+  height: 40px;
+  width: 16px;
+  z-index: 1;
+  border-radius: 150%;
+}
+.brazo-izquierdo {
+  background-color: var(--robot-light);
+  transform: rotateZ(30deg) translate(10%, -5%);
+}
+.brazo-derecho {
+  background-color: var(--robot-dark);
+  transform: rotateZ(-30deg) translate(-10%, -5%);
+  transition: all ease 0.4s;
+}
+/* Animaciones */
+.robotito:hover .cabeza {
+  transform: rotateZ(-30deg);
+}
+.robotito:hover .brazo-derecho {
+  animation: hand 0.5s linear infinite;
+  animation-delay: 0.3s;
+  transform: translate(10%, -80%) rotateZ(-140deg);
+}
+
+.robotito:hover .ojito {
+  border-radius: 50% 50% 0% 0%;
+  height: 72%;
+}
+
+.robotito:hover .boquita {
+  width: 20%;
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3%);
+  }
+}
+/* Saludar */
+@keyframes hand {
+  0% {
+    transform: translate(10%, -80%) rotateZ(-140deg);
+  }
+  50% {
+    transform: translate(10%, -30%) rotateZ(-100deg);
+  }
+  100% {
+    transform: translate(10%, -80%) rotateZ(-140deg);
+  }
+}
